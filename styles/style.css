@@ -1,0 +1,38 @@
+.navbar {
+    background-color: black;
+}
+
+.nav-link {
+    color: blueviolet;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.btn-outline {
+    color: blueviolet;
+    border-color: blueviolet;
+}
+
+.btn-outline:hover {
+    color: white;
+    background-color: blueviolet;
+}
+
+header {
+    background-color: blueviolet;
+    color: white;
+}
+
+main {
+    background-color: black;
+}
+
+strong {
+    color: blueviolet;
+}
+
+.mask {
+    background-color: rgba(251, 251, 251, 0.15)
+}
