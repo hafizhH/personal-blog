@@ -1,38 +1,135 @@
 .navbar {
-    background-color: black;
+    background-color: rgb(187, 50, 50);
 }
 
 .nav-link {
-    color: blueviolet;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
 }
 
 .nav-link:hover {
-    color: white;
+    color: rgb(255, 180, 180);
 }
 
+.navlogo{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.navlogo:hover {
+    color: aliceblue;
+    text-decoration: none;
+}
+
+
 .btn-outline {
-    color: blueviolet;
-    border-color: blueviolet;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
 }
 
 .btn-outline:hover {
+    background-color: rgb(210, 65, 65);
+    text-decoration: underline;
     color: white;
-    background-color: blueviolet;
 }
 
 header {
-    background-color: blueviolet;
+    background-image: url("https://mdbootstrap.com/img/new/standard/nature/184.jpg");
     color: white;
 }
 
+.header-container {
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 60px 60px rgba(0,0,0,0.3);
+}
+
 main {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 
 strong {
-    color: blueviolet;
+    color: rgb(0, 0, 0);
+}
+
+a {
+    color: rgb(40,40,40);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(40,40,40);
+    text-decoration: underline;
 }
 
 .mask {
     background-color: rgba(251, 251, 251, 0.15)
+}
+
+.home-title {
+    font-size: 96px;
+    font-weight: 400;
+}
+
+.home-subtitle {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.blog{
+    margin: auto;
+    margin-top: 2%;
+    width: 50%;
+    padding: 30px 60px 30px 60px;
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 2px 2px 40px 10px rgb(230, 230, 230);
+}
+
+.blogtitle{
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.3;
+    text-align: left;
+}
+
+.bloginfo{
+    text-decoration: none;
+    font-size: 22px;
+}
+
+.blogdate {
+    font-size: 16px;
+    color: rgb(100,100,100);
+}
+
+.blogcontent {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.blogcontent img {
+    width: 100%;
+}
+
+.testimage{
+    width: 100%;
+}
+
+.crop-img {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.card {
+    height: 100%;
+}
+
+.card-text, .card-text * {
+    color: rgb(100,100,100);
 }
