@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import MainLayout from '../components/main-layout';
 import { getAllPostsData } from '../lib/posts';
 
 export async function getStaticProps() {
@@ -12,73 +13,42 @@ export async function getStaticProps() {
 // '/'
 export default function Home({ allPostsData }) {
     return (
-    <div>
-    <Head>
-      <meta charset="utf-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <title>GoBlog</title>
-    </Head>
+    <>
+      <Head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>GoBlog</title>
+      </Head>
 
-    <nav className="navbar sticky-top navbar-expand-lg">
-        <div className="container">
-          <Link href="/">
-            <a className="navlogo">GoBlog</a>
-          </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav mx-auto">
-              <a className="nav-link" href="#">Home</a>
-              <a className="nav-link" href="#">Blogs</a>
-              <a className="nav-link" href="#">Post</a>
-              <a className="nav-link" href="#">My Account</a>
+      <MainLayout>
+        <header className="py-5 mb-0">
+          <div className="container header-container">
+            <div className="text-center my-5">
+                <h1 className="home-title">Welcome to GoBlog</h1>
+                <p className="lead mb-0 home-subtitle">See the latest blogs</p>
             </div>
           </div>
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-            <button className="btn btn-outline" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
+        </header>
 
-  <header className="py-5 mb-0">
-    <div className="container header-container">
-      <div className="text-center my-5">
-          <h1 className="home-title">Welcome to GoBlog</h1>
-          <p className="lead mb-0 home-subtitle">See the latest blogs</p>
-      </div>
-    </div>
-  </header>
+        <main className="mt-0 pt-5">
+          <div className="container">
+            <section className="text-center">
+              <h4 className="mb-5"><strong>Latest posts</strong></h4>
+              <PostList allPostsData={allPostsData}/>
+            </section>
+          </div>
+        </main>
 
-  <main className="mt-0 pt-5">
-    <div className="container">
-      <section className="text-center">
-        <h4 className="mb-5"><strong>Latest posts</strong></h4>
-        <PostList allPostsData={allPostsData}/>
-      </section>
-    </div>
-  </main>
-
-    <nav aria-label="Page navigation example">
-        <ul className="pagination justify-content-center">
-          <li className="page-item">
-            <a className="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li className="page-item"><a className="page-link" href="#">1</a></li>
-          <li className="page-item"><a className="page-link" href="#">2</a></li>
-          <li className="page-item"><a className="page-link" href="#">3</a></li>
-          <li className="page-item">
-            <a className="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-    </nav>
-    </div>
-    );
+          <br></br>
+        <nav aria-label="Page navigation example">
+            <ul className="pagination justify-content-center">
+              <li className="page-item"><a className="page-link" href="#">Read More</a></li>
+            </ul>
+        </nav>
+        <br></br>
+      </MainLayout>
+    </>
+  );
 }
 
 
