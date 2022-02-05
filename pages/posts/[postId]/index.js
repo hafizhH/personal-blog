@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import MainLayout from '../../components/main-layout';
-import { getAllPostIds, fetchPostData } from '../../lib/posts';
-import { formatDate } from '../../lib/utilities';
+import MainLayout from '../../../components/main-layout';
+import { getAllPostIds, fetchPostData } from '../../../lib/posts';
+import { formatDate } from '../../../lib/utilities';
 
 export async function getStaticPaths({ params }) {
-  const paths = getAllPostIds();
+  const paths = await getAllPostIds();
   return {
     paths,
     fallback: 'blocking'
