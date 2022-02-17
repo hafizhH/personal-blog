@@ -12,13 +12,13 @@ export default function MainLayout({ children }) {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav mx-auto">
               <Link href="/"><a className="nav-link">Home</a></Link>
-              <a className="nav-link" href="#">Blogs</a>
-              <a className="nav-link" href="#">Write</a>
-              <a className="nav-link" href="#">My Account</a>
+              <Link href="/posts"><a className="nav-link">Posts</a></Link>
+              <Link href="/admin/cms"><a className="nav-link">Write</a></Link>
+              <Link href="/admin/login"><a className="nav-link">My Account</a></Link>
             </div>
           </div>
-          <form className="d-flex">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
+          <form action="/posts/search" className="d-flex">
+            <input className="form-control me-2" type="search" name="keywords" placeholder="Search" aria-label="Search"></input>
             <button className="btn btn-outline" type="submit">Search</button>
           </form>
         </div>
@@ -44,9 +44,9 @@ export default function MainLayout({ children }) {
                 <h6>Links</h6>
                 <ul className="footer-links">
                   <li><Link href="/"><a>Home</a></Link></li>
-                  <li><a href="#">Posts</a></li>
-                  <li><a href="#">Write</a></li>
-                  <li><a href="#">My Account</a></li>
+                  <li><Link href="/posts"><a>Posts</a></Link></li>
+                  <li><Link href="/admin/cms"><a>Write</a></Link></li>
+                  <li><Link href="/admin/login"><a>My Account</a></Link></li>
                 </ul>
               </div>
             </div>

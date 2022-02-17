@@ -1,8 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
-import MainLayout from '../components/main-layout';
-import { getAllPostsData } from '../lib/posts';
+import MainLayout from '../../components/main-layout';
+import { getAllPostsData } from '../../lib/posts';
 
 export async function getStaticProps() {
   const allPostsData = await getAllPostsData();
@@ -12,29 +11,20 @@ export async function getStaticProps() {
 }
 
 // '/'
-export default function Home({ allPostsData }) {
+export default function Posts({ allPostsData }) {
     return (
     <>
       <Head>
-        <meta charSet="utf-8"/>
+        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>GoBlog</title>
       </Head>
 
       <MainLayout>
-        <header className="py-5 mb-0">
-          <div className="container header-container">
-            <div className="text-center my-5">
-                <h1 className="home-title">Welcome to GoBlog</h1>
-                <p className="lead mb-0 home-subtitle">See the latest blogs</p>
-            </div>
-          </div>
-        </header>
-
         <main className="mt-0 pt-5">
           <div className="container">
             <section className="text-center">
-              <h4 className="mb-5"><strong>Latest posts</strong></h4>
+              <h4 className="mb-5"><strong>All recent posts</strong></h4>
               <PostList allPostsData={allPostsData}/>
             </section>
           </div>
@@ -43,7 +33,9 @@ export default function Home({ allPostsData }) {
           <br></br>
         <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-center">
-              <li className="page-item"><Link href="/posts"><a className="page-link">Read More</a></Link></li>
+              <li className="page-item"><a className="page-link" href="#">1</a></li>
+              <li className="page-item"><a className="page-link" href="#">2</a></li>
+              <li className="page-item"><a className="page-link" href="#">3</a></li>
             </ul>
         </nav>
         <br></br>

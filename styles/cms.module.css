@@ -1,0 +1,324 @@
+
+.link:hover {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+.body {
+    display: block;
+    width: 100%;
+    min-height: 100vh;
+    font-size: 18px;
+}
+
+.toInlineBlock {
+    display: inline-block;
+}
+
+.toBlock {
+    display: block;
+}
+
+.text1LL {
+    font-size: 1rem;
+    color: white;
+}
+
+.text1L {
+    font-size: 1rem;
+    color: rgb(220,220,220);
+}
+
+.text2LL {
+    font-size: 0.85rem;
+    color: white;
+}
+
+.text2L {
+    font-size: 0.85rem;
+    color: rgb(220,220,220);
+}
+
+.text3L {
+    font-size: 0.7rem;
+    color: rgb(220,220,220);
+}
+
+.headerContainer {
+    display: block;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 99;
+    box-shadow: 0px 2px 30px 15px rgba(0,0,0,0.3);
+}
+
+.mainContainer {
+    display: block;
+    width: 100%;
+    top: 60px;
+    height: 100%;
+}
+
+.leftDrawerContainer {
+    position: fixed;
+    width: 150px;
+    height: 100%;
+    float: left;
+    left: 0px;
+    top: 60px;
+    background-color: rgb(90,90,90);
+    z-index: 99;
+}
+
+.leftDrawer {
+    color: rgb(200,200,200);
+}
+
+.drawerHeader {
+    display: flex;
+    padding: 10px 8px 10px 8px;
+    height: 60px;
+    background-color: rgb(130,130,130);
+    border-bottom: 1px solid gray;
+    flex-direction: row;
+}
+
+.drawerHeaderL {
+    flex-grow: 0;
+    width: 40px;
+    height: 40px;
+}
+
+.drawerHeaderR {
+    flex-grow: 1;
+    padding: 3px;
+    line-height: 1.1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.profileImg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.drawerMenu {
+    display: block;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    text-align: center;
+    transition: linear 0.3s;
+    background-color: rgba(80,80,80,0.0);
+    border-left-width: 0px;
+}
+
+.drawerMenu:hover {
+    transition: linear 0.1s;
+    border-left: 4px solid hsl(0, 100%, 70%);
+    border-right: 4px solid hsla(0, 100%, 70%, 0.0);
+    
+    background-color: rgb(80,80,80);
+    color: white;
+}
+
+.drawerMenu:hover > div {
+    color: white;
+    cursor: pointer;
+}
+
+.drawerMenuSelected {
+    transition: linear 0.1s;
+    border-left: 4px solid hsl(0, 100%, 70%);
+    border-right: 4px solid hsla(0, 100%, 70%, 0.0);
+    background-color: rgba(80,80,80,0.0);
+    color: white;
+}
+
+.mainContentContainer {
+    position: absolute;
+    top: 60px;
+    left: 150px;
+    right: 0px;
+    height: 500px;
+}
+
+.contentContainer {
+    display: block;
+    position: absolute;
+    left: 10%;
+    min-width: 80%;
+    min-height: 100%;
+    padding-bottom: 100px;
+}
+
+.leftContent {
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    width: 50%;
+}
+
+.rightContent {
+    display: block;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    width: 50%;
+}
+
+.postList {
+    list-style-type: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.postListItem {
+    padding: 15px;
+    margin: 15px 0px 15px 0px;
+    width: 100%;
+    min-height: 110px;
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    box-shadow: 2px 2px 20px rgba(0,0,0,0.1);
+}
+
+.postListItem:hover {
+    transition: 0.2s;
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
+}
+
+.thumbContainer {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    overflow-y: hidden;
+}
+
+.thumbContainer img {
+    width: 80px;
+}
+
+.thumbContainer2 {
+    width: 200px;
+    height: 200px;
+    overflow-y: hidden;
+}
+
+.thumbContainer2 img {
+    width: 200px;
+}
+
+.postDetails {
+    position: absolute;
+    left: 135px;
+    right: 0px;
+    font-size: 1rem;
+    height: fit-content;
+    padding: 5px;
+}
+
+.postDetails div {
+    margin: 0px;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.postListItem:hover div {
+    overflow: visible;
+}
+
+
+.postMetaContainer {
+    display: flex;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 200px;
+    width: 100%;
+    flex-direction: row;
+}
+
+.leftContainer {
+    flex-grow: 0;
+}
+
+.rightContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    padding-left: 60px;
+    padding-right: 60px;
+    justify-content: space-around;
+}
+
+.rightContainer div {
+    display: flex;
+    border: none;
+    flex-direction: row;
+}
+
+.rightContainer div label {
+    flex-grow: 0;
+    flex-basis: 70px;
+}
+
+.rightContainer div input {
+    flex-grow: 1;
+    border: none;
+}
+
+.rightContainer div input:hover {
+    outline: none;
+    border-bottom: 1px solid rgb(200,200,200);
+}
+
+.rightContainer div input:focus {
+    outline: none;
+    border-bottom: 2px solid gray;
+}
+
+.postEditorContainer {
+
+}
+
+.toolboxContainer {
+
+}
+
+.editorContainer {
+    display: flex;
+
+}
+
+.editorContainer textarea {
+    flex-grow: 0;
+    padding: 10px;
+    width: 50%;
+    resize: none;
+    font-size: 0.9rem;
+    outline: none;
+    border: 1px solid rgba(150,150,150,0.5);
+    border-radius: 10px;
+}
+
+.previewContent {
+    width: 50%;
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+.previewContent img {
+    width: 100%;
+}

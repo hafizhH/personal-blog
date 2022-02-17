@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import MainLayout from '../../../components/main-layout';
+import Comment from '../../../components/comment';
 import { getAllPostIds, fetchPostData } from '../../../lib/posts';
 import { formatDate } from '../../../lib/utilities';
 
@@ -15,9 +16,11 @@ export async function getStaticPaths({ params }) {
 
 export async function getStaticProps({ params }) {
   const postData = await fetchPostData(params.postId);
+  //console.log(postData);
   if (postData !== null) {
     return {
-      props: { postData }
+      props: { postData },
+      revalidate: 10
     }
   }
 }
@@ -40,6 +43,10 @@ export default function Post({ postData }) {
         <p className="bloginfo">By : <a href="#" className="bloginfo">{postData.author}</a></p>
         <p className="blogdate">{formatDate(postData.date)}</p>
         <div className="blogcontent" dangerouslySetInnerHTML={{ __html: postData.htmlContent }} />
+        <br></br>
+        <br></br>
+        <hr></hr>
+        <Comment comments={JSON.parse(postData.comments)}/>
       </div>
     </MainLayout>
   </>

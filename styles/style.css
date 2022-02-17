@@ -82,7 +82,8 @@ a:hover {
 
 .blog{
     margin: auto;
-    margin-top: 2%;
+    margin-top: 3%;
+    margin-bottom: 4%;
     width: 50%;
     padding: 30px 60px 30px 60px;
     height: auto;
@@ -195,8 +196,8 @@ a:hover {
 
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
-    color:#ad4141;
-    text-decoration:none;
+    color:hsl(0, 100%, 70%);
+    text-decoration: none;
 }
 
 
@@ -233,4 +234,235 @@ a:hover {
 .allposts{
     padding-top: 1%;
     padding-bottom: 1%;
+}
+
+.date {
+    font-size: 11px
+}
+
+.comment-text {
+    font-size: 12px
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow: none
+}
+
+.name {
+    color: #007bff
+}
+
+.cursor:hover {
+    color: blue
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
+}
+
+.hidden {
+    visibility: hidden;
+    display: block;
+    height: 0px;
+    display: none;
+}
+
+.comment-input {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.comment-link-s {
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: black;
+    text-decoration: none;
+}
+
+.comment-link-m {
+    cursor: pointer;
+    font-size: 1rem;
+    color: black;
+    text-decoration: none;
+}
+
+.comment-link-m:hover, .comment-link-s:hover  {
+    cursor: pointer;
+    color: rgb(80,80,80);
+    text-decoration: none;
+}
+
+.reply-tag {
+    color: #007bff;
+}
+
+.main-content {
+	width: 50%;
+	border-radius: 20px;
+	box-shadow: 0 5px 5px rgba(0,0,0,.4);
+	margin: 5em auto;
+	display: flex;
+}
+
+.info {
+	background-color: red;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: white;
+}
+
+@media screen and (min-width: 280px) and (max-width: 480px) {
+	.main-content {
+		width: 80%;
+		margin-top: 30%;
+	}
+
+	.info {
+		display: none;
+	}
+
+	.login_form {
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.main-content {
+		width: 80%;
+		margin-top: 30%;
+	}
+
+	.info {
+		display: none;
+	}
+
+	.login_form {
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+
+@media screen and (min-width: 640px) and (max-width: 769px){
+	.main-content {
+		width: 80%;
+		margin-top: 30%;
+	}
+
+	.info {
+		display: none;
+	}
+
+	.login_form {
+		border-top-left-radius:20px;
+		border-bottom-left-radius:20px;
+	}
+}
+
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+	.main-content {
+		width: 70%;
+	}
+}
+
+.row > h2 {
+	color:red;
+}
+
+.row > p {
+    padding-top: 10px;
+}
+
+.login_form {
+	background-color: #fff;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+.form-group {
+	padding: 0 2em;
+}
+
+.form__input {
+	width: 100%;
+	border:0px solid transparent;
+	border-radius: 0;
+	border-bottom: 1px solid #aaa;
+	padding: 1em .5em .5em;
+	padding-left: 2em;
+	outline:none;
+	margin:1.5em auto;
+	transition: all .5s ease;
+}
+
+.form__input:focus {
+	border-bottom-color: red;
+	border-radius: 4px;
+    color: red;
+}
+
+.btn2 {
+	transition: all .5s ease;
+	width: 70%;
+	border-radius: 30px;
+	color: red;
+	font-weight: 600;
+	background-color: transparent;
+	border: 1px solid red;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.btn2:hover, .btn2:focus {
+	background-color: red;
+	color:#fff;
+}
+
+.register {
+	text-decoration: none;
+	color: red;
+}
+
+.login {
+	text-decoration: none;
+	color: red;
+}
+
+.search{
+    border-radius: 50px;
+    background: #faf4f4;
+    box-shadow:  -29px -29px 58px #e9e3e3,
+                 29px 29px 58px #ffffff;
+    margin-top: 3%;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: auto;
+    padding: 50px;
+    padding-bottom: 20px;
+}
+
+.searchtext{
+    color: rgb(58, 53, 53);
+    font-size: 30px;
+    font-weight:bold;
+    text-align: center;
+}
+
+.subsearch{
+    font-size: 17px;
+    font-weight: 200;
+    color: rgb(58, 53, 53);
 }
