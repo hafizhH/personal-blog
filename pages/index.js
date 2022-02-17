@@ -2,10 +2,10 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import MainLayout from '../components/main-layout';
-import { getAllPostsData } from '../lib/posts';
+import { getLatestPostsData } from '../lib/posts';
 
-export async function getStaticProps() {
-  const allPostsData = await getAllPostsData();
+export async function getServerSideProps() {
+  const allPostsData = await getLatestPostsData();
   return {
     props: { allPostsData }
   }
