@@ -1,11 +1,11 @@
-import styles from '../styles/cms.module.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { formatDate } from '../lib/utilities';
 import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
-import { nextWednesday } from 'date-fns';
+import styles from '../styles/cms.module.css';
+import styles2 from '../styles/cms2.module.css';
 
 export function Dashboard() {
   const [ postList, setPostList ] = useState([]);
@@ -177,7 +177,35 @@ export function PostEditor({ postId }) {
 }
 
 export function ManageProfile() {
-
+  return (
+    <div className={styles2.content}>
+      <div className={styles2.container}>
+        <div className={styles2.card}>
+          <div className={styles2.info}> <span>Account Details</span> <button id="savebutton">edit</button> </div>
+          <div className={styles2.forms}>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-person"></i> Full Name</span> <input type="text" readOnly value="John" /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-envelope"></i> Email</span> <input type="text" readOnly value="Email" /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-address-card"></i> Username</span> <input type="text" readOnly value="username" /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-calendar"></i> Date of Birth</span> <input type="text" readOnly value="dd/mm/yyyy" /> </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles2.edit_pp}>
+        <div className={styles2.pp_text}>
+          <i className="fa-solid fa-image-portrait"></i> Profile Picture
+        </div>
+        <hr /><br />
+        <img src="https://i.imgur.com/V4RclNb.png" className={styles2.pp_cms} alt="Profile Picture" />
+        <br /><br />
+        <div className={styles2.upload_button}>
+          <label className={styles2.custom_file_upload}>
+            <input className={styles2.fileInput} type="file"/>
+            <i className="fa-solid fa-upload"></i> Upload Image
+          </label> 
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export function Settings() {

@@ -1,6 +1,13 @@
 import Link from 'next/link';
 
 export default function MainLayout({ children }) {
+
+  function handleSearch(event) {
+    const formData = new FormData(event.target);
+    if (formData.keywords == '') 
+      event.preventDefault();
+  }
+
   return (
     <>
       <nav className="navbar sticky-top navbar-expand-lg">
@@ -17,7 +24,7 @@ export default function MainLayout({ children }) {
               <Link href="/admin/login"><a className="nav-link">My Account</a></Link>
             </div>
           </div>
-          <form action="/posts/search" className="d-flex">
+          <form action="/posts/search" className="d-flex" onSubmit={(event) => handleSearch(event)}>
             <input className="form-control me-2" type="search" name="keywords" placeholder="Search" aria-label="Search"></input>
             <button className="btn btn-outline" type="submit">Search</button>
           </form>

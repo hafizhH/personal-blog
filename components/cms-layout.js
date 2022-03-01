@@ -1,8 +1,9 @@
 import Cookies from 'js-cookie';
 import Link from 'next/link';
+import Head from 'next/head';
 import { useState, useEffect } from 'react';
-
 import styles from '../styles/cms.module.css';
+import styles2 from '../styles/cms2.module.css';
 
 export default function CMSLayout({ children, currentPage, setPage }) {
   const [ accountName, setAccountName ] = useState('');
@@ -13,6 +14,61 @@ export default function CMSLayout({ children, currentPage, setPage }) {
   },[]);
 
   return (
+    <>
+      <Head>
+        <meta charset="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CMS</title>
+      </Head>
+
+      <div className={styles2.body}>
+        <input type="checkbox" id="check" className={`${styles2.check} ${styles.check}`} />
+        <div className={styles2.header}>
+          <label htmlFor="check">
+            <i className={`fa-solid fa-bars ${styles2.sidebar_btn}`}></i>
+          </label>
+          <div className={styles2.left_area}>
+            <h3>Go<span>CMS</span></h3>
+          </div>
+          <div className={styles2.right_area}>
+            <a href="#" className={styles2.return_button}>Return</a>
+          </div>
+        </div>
+
+        <div className={styles2.mobile_nav}>
+          <div className={styles2.nav_bar}>
+            <img src="https://i.imgur.com/V4RclNb.png" className={styles2.mobile_pp} alt="Profile Picture" />
+            <i className={`fa fa-bars ${styles2.nav_btn}`}></i>
+          </div>
+          <div className={styles2.mobile_nav_items}>
+            <a href="home.html" className={styles2.active_menu}><i className="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="profile.html"><i className="fa-solid fa-user"></i><span>Profile</span></a>
+            <a href="posts.html"><i className="fa-solid fa-table"></i><span>Manage Posts</span></a>
+            <a href="settings.html"><i className="fa-solid fa-sliders-h"></i><span>Settings</span></a>
+          </div>
+        </div>
+
+        <div className={styles2.sidebar}>
+          <div className={styles2.profile_info}>
+            <img src="https://i.imgur.com/V4RclNb.png" className={styles2.pp_cms} alt="Profile Picture" />
+            <h4>{accountName}</h4>
+          </div>
+          <a className={currentPage=='Dashboard' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='Dashboard') setPage('Dashboard')} }><i className="fa-solid fa-house"></i><span>Home</span></a>
+          <a className={currentPage=='ManageProfile' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='ManageProfile') setPage('ManageProfile')} }><i className="fa-solid fa-user"></i><span>Profile</span></a>
+          <a className={currentPage=='PostList' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='PostList') setPage('PostList')} }><i className="fa-solid fa-table"></i><span>Manage Posts</span></a>
+          <a className={currentPage=='Settings' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='Settings') setPage('Settings')} }><i className="fa-solid fa-sliders-h"></i><span>Settings</span></a>
+        </div>
+
+        {children}
+      </div>
+    </>
+  );
+
+  }
+
+/*
+  return (
     <div className={styles.body}>
       <div className={styles.headerContainer}>
         <nav className="navbar sticky-top navbar-expand-lg">
@@ -21,16 +77,7 @@ export default function CMSLayout({ children, currentPage, setPage }) {
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"></span>
             </button>
-            {/*
-            <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div className="navbar-nav mx-auto">
-                <Link href="/"><a className="nav-link">Home</a></Link>
-                <a className="nav-link" href="#">Blogs</a>
-                <a className="nav-link" href="#">Write</a>
-                <a className="nav-link" href="#">My Account</a>
-              </div>
-            </div>
-            */}
+            
           </div>
         </nav>
       </div>
@@ -65,3 +112,4 @@ export default function CMSLayout({ children, currentPage, setPage }) {
     </div>
   );
 }
+*/
