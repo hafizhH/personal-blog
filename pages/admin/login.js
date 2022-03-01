@@ -29,7 +29,7 @@ export default function Login() {
     const username = formData.get('username');
     const password = formData.get('password');
     let loginResult = await axios.post('http://localhost:3000/api/login', { username: username, password: password });
-    console.log("loginResult.data: " + JSON.stringify(loginResult.data));
+    //console.log("loginResult.data: " + JSON.stringify(loginResult.data));
     if (loginResult.data) {
       //alert('Login success');
       Router.push('/admin/cms');

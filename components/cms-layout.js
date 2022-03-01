@@ -32,7 +32,7 @@ export default function CMSLayout({ children, currentPage, setPage }) {
             <h3>Go<span>CMS</span></h3>
           </div>
           <div className={styles2.right_area}>
-            <a href="#" className={styles2.return_button}>Return</a>
+            <Link href='/'><a className={styles2.return_button}>Return</a></Link>
           </div>
         </div>
 

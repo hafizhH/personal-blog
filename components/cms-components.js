@@ -4,6 +4,7 @@ import { formatDate } from '../lib/utilities';
 import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
+import Cookies from 'js-cookie';
 import styles from '../styles/cms.module.css';
 import styles2 from '../styles/cms2.module.css';
 
@@ -111,7 +112,7 @@ export function PostEditor({ postId }) {
     }).then((response) => {
       if (response.status === 200) {
         setPostData(response.data.data);
-        console.log(postData);
+        //console.log(postData);
       }
     }).catch((e) => {
       console.log(e.message);
@@ -178,11 +179,22 @@ export function PostEditor({ postId }) {
 
 export function ManageProfile() {
   const [ editMode, setEditMode ] = useState(false);
-  const [ profileData, setProfileData ] = useState({});
+  const [ authorAcc, setAuthorAcc ] = useState({});
 
   useEffect(() => {
-    axios.post('http://localhost:3000/api/dbQuery', { re})
+    setAuthorAcc(JSON.parse(Cookies.get("loginCredentials")).authorAcc);
   }, []);
+
+  function saveProfileHandler() {
+    axios.post('http://localhost:3000/api/dbQuery', { type: 'setAccountData', authorAcc: authorAcc })
+    .then(response => {
+      if (response.data.data) {
+        const cookies = JSON.parse(Cookies.get("loginCredentials"));
+        cookies.authorAcc = response.data.data;
+        Cookies.set("loginCredentials", JSON.stringify(cookies));
+      }
+    })
+  }
 
   function editProfileHandler(event) {
     const textInput = document.getElementById('profile-form').getElementsByTagName('input');
@@ -194,12 +206,19 @@ export function ManageProfile() {
       textInput[3].readOnly = false;
       setEditMode(true);
     } else {
+      let newAuthorAcc = authorAcc;
+      newAuthorAcc.user = textInput[2].value;
+      newAuthorAcc.email = textInput[1].value;
+      newAuthorAcc.pass = (textInput[3].value == '') ? newAuthorAcc.pass : textInput[3].value;
+      newAuthorAcc.name = textInput[0].value;
       event.target.innerHTML = "edit";
       textInput[0].readOnly = true;
       textInput[1].readOnly = true;
       textInput[2].readOnly = true;
       textInput[3].readOnly = true;
       setEditMode(false);
+      setAuthorAcc(newAuthorAcc);
+      saveProfileHandler();
     }
   }
   return (
@@ -208,10 +227,10 @@ export function ManageProfile() {
         <div className={styles2.card}>
           <div className={styles2.info}> <span>Account Details</span> <button id="savebutton" onClick={(event) => editProfileHandler(event)}>edit</button> </div>
           <div id="profile-form" className={styles2.forms}>
-            <div className={styles2.inputs}> <span><i className="fa-solid fa-person"></i> Full Name</span> <input type="text" readOnly value="John" /> </div>
-            <div className={styles2.inputs}> <span><i className="fa-solid fa-envelope"></i> Email</span> <input type="text" readOnly value="Email" /> </div>
-            <div className={styles2.inputs}> <span><i className="fa-solid fa-address-card"></i> Username</span> <input type="text" readOnly value="username" /> </div>
-            <div className={styles2.inputs}> <span><i className="fa-solid fa-calendar"></i> Date of Birth</span> <input type="text" readOnly value="dd/mm/yyyy" /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-person"></i> Full Name</span> <input type="text" readOnly defaultValue={authorAcc.name} /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-envelope"></i> Email</span> <input type="text" readOnly defaultValue={authorAcc.email} /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-address-card"></i> Username</span> <input type="text" readOnly defaultValue={authorAcc.user} /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-calendar"></i> New Password</span> <input type="password" readOnly defaultValue="" /> </div>
           </div>
         </div>
       </div>
