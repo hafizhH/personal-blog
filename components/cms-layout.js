@@ -10,7 +10,7 @@ export default function CMSLayout({ children, currentPage, setPage }) {
 
   useEffect(() => {
     const loginCredentials = JSON.parse(Cookies.get('loginCredentials'));
-    setAccountName(loginCredentials.name);
+    setAccountName(loginCredentials.authorAcc.name);
   },[]);
 
   return (

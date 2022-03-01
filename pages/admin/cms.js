@@ -17,6 +17,7 @@ export default function CMS() {
       axios.post('http://localhost:3000/api/login', {}, { withCredentials: true })
       .then(response => {
         loginResult = response.data;
+        console.log("loginResult:" + loginResult)
         if (!loginResult) {
           Router.push('/admin/login');
         }

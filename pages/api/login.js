@@ -6,11 +6,13 @@ export default async function loginHandler(req, res) {
   if (!username || !password) {
     const loginCredentials = JSON.parse(req.cookies['loginCredentials']);
     const data = await autoLogin(loginCredentials.cookie);
+    //console.log("loginCredentials: " + JSON.stringify(loginCredentials))
+    //console.log("data: " + data)
     res.status(200).json(data);
   } else {
     const data = await login(username, password);
     if (data) {
-      res.setHeader('Set-Cookie', serialize('loginCredentials', JSON.stringify(data.authorAcc), { maxAge: 1800, path: '/' })).status(200).status(200).json(data);
+      res.setHeader('Set-Cookie', serialize('loginCredentials', JSON.stringify(data), { maxAge: 1800, path: '/' })).status(200).json(data);
     } else {
       res.status(200).json(data);
     }
