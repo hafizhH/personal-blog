@@ -1,108 +1,29 @@
-.headernav{
-    position: relative;
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 10px;
-    background: #fff;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+.navbar {
+    background-color: rgb(187, 50, 50);
 }
 
-.logo{
-    color: #f33636;
-    height: 60px;
-    font-size: 36px;
-    line-height: 60px;
-    padding: 0 20px;
-    background: #fff;
-    text-align: center;
-    box-sizing: border-box;
-    float: left;
-    font-weight: 700;
+.nav-link {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.nav-link:hover {
+    color: rgb(255, 180, 180);
     text-decoration: none;
 }
 
-nav{
-    float: right;
-}
-
-.clearfix{
-    clear:both;
-}
-
-nav ul{
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-nav ul li{
-    list-style: none;
-}
-
-nav ul li a{
-    display: block;
-    margin: 10px 0;
-    padding: 10px 20px;
+.navlogo{
+    color: aliceblue;
     text-decoration: none;
-    color: #262626;
+    font-size: 30px;
+    font-weight: 500;
 }
 
-nav ul li a.active,
-nav ul li a:hover{
-    background: #f33636;
-    color: #fff;
-    transition: 0.5s;
+.navlogo:hover {
+    color: aliceblue;
+    text-decoration: none;
 }
 
-@media (max-width:1200px){
-    header{
-        margin: 20px;
-    }
-}
-
-@media (max-width:768px){
-    .menu-toggle{
-        display: block;
-        width: 40px;
-        height: 40px;
-        margin: 10px;
-        background: #fff;
-        float: right;
-        cursor: pointer;
-        text-align: center;
-        font-size: 30px;
-        color: #f33636;
-    }
-
-    .menu-toggle:before{
-        content: '\f0c9';
-        font-family: fontAwesome;
-        line-height: 40px;
-    }
-
-    .menu-toggle.active:before{
-        content: '\f00d';
-    }
-
-    nav{
-        display: none;
-    }
-
-    nav.active{
-        display: block;
-        width: 100%;
-    }
-
-    nav.active ul{
-        display: block;
-    }
-
-    nav.active ul li a{
-        margin: 0;
-    }
-}
 
 .btn-outline {
     font-weight: 600;
@@ -114,6 +35,16 @@ nav ul li a:hover{
     background-color: rgb(210, 65, 65);
     text-decoration: none;
     color: white;
+}
+
+header {
+    background-image: url("https://mdbootstrap.com/img/new/standard/nature/184.jpg");
+    color: white;
+}
+
+.header-container {
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 60px 60px rgba(0,0,0,0.3);
 }
 
 main {
@@ -518,7 +449,6 @@ a:hover {
     margin-top: 3%;
     margin-left: 15%;
     margin-right: 15%;
-    min-height: 700px;
     height: auto;
     padding: 50px;
     padding-bottom: 20px;

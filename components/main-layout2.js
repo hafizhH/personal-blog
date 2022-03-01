@@ -1,9 +1,6 @@
 import Link from 'next/link';
-import Script from 'next/script';
-import { useState } from 'react';
 
 export default function MainLayout({ children }) {
-  const [ isMenuActive, setIsMenuActive ] = useState(false);
 
   function handleSearch(event) {
     const formData = new FormData(event.target);
@@ -13,36 +10,26 @@ export default function MainLayout({ children }) {
 
   return (
     <>
-        <div className='headernav'>
-            <a href="#" className="logo">GoBlog</a>
-            <div className={"menu-toggle " + ((isMenuActive) ? "active" : "")} onClick={() => setIsMenuActive(!isMenuActive)}></div>
-            <nav className={(isMenuActive) ? "active" : ""}>
-                <ul>
-                    <Link href="/"><li><a>Home</a></li></Link>
-                    <Link href="/posts"><li><a>Posts</a></li></Link>
-                    <Link href="/admin/cms"><li><a>Write</a></li></Link>
-                    <Link href="/admin/login"><li><a>My Account</a></li></Link>
-                    <li>
-                      <form action="/posts/search" onSubmit={(event) => handleSearch(event)}>
-                        <input type="search" name="keywords" placeholder="Search" aria-label="Search"></input>
-                        <button type="submit">Search</button>
-                      </form>
-                    </li>
-                </ul>
-            </nav>
-            <div className="clearfix"></div>
-            {/*
-            <Script type="text/javascript">
-              $(document).ready(function(){
-                  $('.menu-toggle').click(function(){
-                      $('.menu-toggle').toggleClass('active')
-                      $('nav').toggleClass('active')
-                  })
-              })
-            </Script>*/}
+      <nav className="navbar sticky-top navbar-expand-lg">
+        <div className="container">
+          <Link href="/"><a className="navlogo">GoBlog</a></Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav mx-auto">
+              <Link href="/"><a className="nav-link">Home</a></Link>
+              <Link href="/posts"><a className="nav-link">Posts</a></Link>
+              <Link href="/admin/cms"><a className="nav-link">Write</a></Link>
+              <Link href="/admin/login"><a className="nav-link">My Account</a></Link>
+            </div>
+          </div>
+          <form action="/posts/search" className="d-flex" onSubmit={(event) => handleSearch(event)}>
+            <input className="form-control me-2" type="search" name="keywords" placeholder="Search" aria-label="Search"></input>
+            <button className="btn btn-outline" type="submit">Search</button>
+          </form>
         </div>
-
-
+      </nav>
 
       {children}
 

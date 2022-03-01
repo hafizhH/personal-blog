@@ -177,12 +177,37 @@ export function PostEditor({ postId }) {
 }
 
 export function ManageProfile() {
+  const [ editMode, setEditMode ] = useState(false);
+  const [ profileData, setProfileData ] = useState({});
+
+  useEffect(() => {
+    axios.post('http://localhost:3000/api/dbQuery', { re})
+  }, []);
+
+  function editProfileHandler(event) {
+    const textInput = document.getElementById('profile-form').getElementsByTagName('input');
+    if (!editMode) {
+      event.target.innerHTML = "save";
+      textInput[0].readOnly = false;
+      textInput[1].readOnly = false;
+      textInput[2].readOnly = false;
+      textInput[3].readOnly = false;
+      setEditMode(true);
+    } else {
+      event.target.innerHTML = "edit";
+      textInput[0].readOnly = true;
+      textInput[1].readOnly = true;
+      textInput[2].readOnly = true;
+      textInput[3].readOnly = true;
+      setEditMode(false);
+    }
+  }
   return (
     <div className={styles2.content}>
       <div className={styles2.container}>
         <div className={styles2.card}>
-          <div className={styles2.info}> <span>Account Details</span> <button id="savebutton">edit</button> </div>
-          <div className={styles2.forms}>
+          <div className={styles2.info}> <span>Account Details</span> <button id="savebutton" onClick={(event) => editProfileHandler(event)}>edit</button> </div>
+          <div id="profile-form" className={styles2.forms}>
             <div className={styles2.inputs}> <span><i className="fa-solid fa-person"></i> Full Name</span> <input type="text" readOnly value="John" /> </div>
             <div className={styles2.inputs}> <span><i className="fa-solid fa-envelope"></i> Email</span> <input type="text" readOnly value="Email" /> </div>
             <div className={styles2.inputs}> <span><i className="fa-solid fa-address-card"></i> Username</span> <input type="text" readOnly value="username" /> </div>
