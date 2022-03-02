@@ -6,17 +6,6 @@ import Cookies from "js-cookie";
 
 export default function Comment({ commentsProp, postData }) {
   const [comments, setComments] = useState(commentsProp);
-  /*
-  useEffect(() => {
-    console.log(comments);
-  }, []);*/
-
-  useEffect(() => {
-    /*axios.post('http://localhost:3000/api/dbQuery', { type: 'setComments', postId: postData.postId, comments: comments })
-    .then(response => {
-      
-    });*/
-  }, [comments]);
 
   return (
     <div className="comment-section">
@@ -42,7 +31,6 @@ function CommentList({ comments, setComments, postId }) {
       newComments[targetIndex[0]].reply.push({ from: replyFrom, to: replyTo, date: date, text: replyText });
     axios.post('http://localhost:3000/api/dbQuery', { type: 'updateCommentData', postId: postId, comments: newComments })
     .then(response => {
-      console.log(response.data.data);
       setComments(newComments);
     })
   }
