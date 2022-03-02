@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import dbConnect from '../../lib/database/dbConnect';
-import { getAllPostsData, fetchPostData } from "../../lib/posts";
+import { getAllPostsData, fetchPostData, updateComments } from "../../lib/posts";
+
 const authors = require('../../lib/database/models/authors')();
 
 export default async function handler(req, res) {
@@ -17,6 +18,10 @@ export default async function handler(req, res) {
     await dbConnect();
     data = await authors.findOneAndUpdate({ _id: mongoose.Types.ObjectId(authorAcc._id ) }, {$set: { user: authorAcc.user, email: authorAcc.email, name: authorAcc.name } }, {new: true}).exec();
     console.log('data: ' + data);
+  } else if (type === 'updateCommentData') {
+    const { postId, comments } = req.body;
+    await dbConnect();
+    data = await updateComments(postId, comments);
   }
   await res.status(200).json({ data: data });
 }

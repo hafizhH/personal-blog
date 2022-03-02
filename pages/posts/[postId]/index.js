@@ -46,7 +46,7 @@ export default function Post({ postData }) {
         <br></br>
         <br></br>
         <hr></hr>
-        <Comment comments={JSON.parse(postData.comments)}/>
+        <Comment commentsProp={JSON.parse(postData.comments)} postData={postData} />
       </div>
     </MainLayout>
   </>
