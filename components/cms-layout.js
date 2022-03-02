@@ -42,22 +42,20 @@ export default function CMSLayout({ children, currentPage, setPage }) {
             <i className={`fa fa-bars ${styles2.nav_btn}`}></i>
           </div>
           <div className={styles2.mobile_nav_items}>
-            <a href="home.html" className={styles2.active_menu}><i className="fa-solid fa-house"></i><span>Home</span></a>
+            <a href="home.html" className={styles2.active_menu}><i className="fa-solid fa-desktop"></i><span>Dashboard</span></a>
             <a href="profile.html"><i className="fa-solid fa-user"></i><span>Profile</span></a>
             <a href="posts.html"><i className="fa-solid fa-table"></i><span>Manage Posts</span></a>
-            <a href="settings.html"><i className="fa-solid fa-sliders-h"></i><span>Settings</span></a>
           </div>
         </div>
 
         <div className={styles2.sidebar}>
           <div className={styles2.profile_info}>
-            <img src="https://i.imgur.com/V4RclNb.png" className={styles2.pp_cms} alt="Profile Picture" />
+            <img src="https://i.imgur.com/V4RclNb.png" className={styles2.pp_cms} alt="Profile Picture" /><br></br>
             <h4>{accountName}</h4>
           </div>
-          <a className={currentPage=='Dashboard' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='Dashboard') setPage('Dashboard')} }><i className="fa-solid fa-house"></i><span>Home</span></a>
+          <a className={currentPage=='Dashboard' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='Dashboard') setPage('Dashboard')} }><i className="fa-solid fa-desktop"></i><span>Dashboard</span></a>
           <a className={currentPage=='ManageProfile' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='ManageProfile') setPage('ManageProfile')} }><i className="fa-solid fa-user"></i><span>Profile</span></a>
           <a className={currentPage=='PostList' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='PostList') setPage('PostList')} }><i className="fa-solid fa-table"></i><span>Manage Posts</span></a>
-          <a className={currentPage=='Settings' ? styles2.active_menu : ''} onClick={() => { if (currentPage!='Settings') setPage('Settings')} }><i className="fa-solid fa-sliders-h"></i><span>Settings</span></a>
         </div>
 
         {children}

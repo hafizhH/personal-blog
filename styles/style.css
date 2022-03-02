@@ -1,30 +1,77 @@
+header{
+    animation: slideBg 30s infinite 5s;
+    animation-timing-function: ease-in-out;
+    background-image: url("https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+@keyframes slideBg{
+    0%{
+        background-image: url("https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    }
+
+    25%{
+        background-image: url("https://images.pexels.com/photos/33041/antelope-canyon-lower-canyon-arizona.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    }
+
+    50%{
+        background-image: url("https://images.pexels.com/photos/5006544/pexels-photo-5006544.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    }
+
+    75%{
+        background-image: url("https://images.pexels.com/photos/3386540/pexels-photo-3386540.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    }
+    
+    100%{
+        background-image: url("https://images.pexels.com/photos/1545510/pexels-photo-1545510.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    }
+
+}
+
+header h1{
+    color: rgb(255, 255, 255);
+    background-color: rgb(201, 47, 47);
+    padding: 5px;
+}
+
+header p{
+    color: white;
+}
+
+.page_center{
+    margin: 0 auto;
+}
+
 .headernav{
-    position: relative;
-    max-width: 1200px;
-    margin: 20px auto;
+    text-decoration: none;
+    max-width: 100%;
     padding: 10px;
-    background: #fff;
+    background: rgb(170, 46, 46);
     box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+    position: sticky;
+    top: 0px;
+    z-index: 1;
 }
 
 .logo{
-    color: #f33636;
+    color: #ffffff;
+    text-decoration: none;
     height: 60px;
     font-size: 36px;
     line-height: 60px;
     padding: 0 20px;
-    background: #fff;
+    background: rgb(170, 46, 46);
     text-align: center;
     box-sizing: border-box;
     float: left;
     font-weight: 700;
-    text-decoration: none;
 }
 
 nav{
     float: right;
+    
 }
 
 .clearfix{
@@ -39,6 +86,10 @@ nav ul{
 
 nav ul li{
     list-style: none;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    padding-right: 20px;
 }
 
 nav ul li a{
@@ -51,7 +102,7 @@ nav ul li a{
 
 nav ul li a.active,
 nav ul li a:hover{
-    background: #f33636;
+    background: #8f2929;
     color: #fff;
     transition: 0.5s;
 }
@@ -62,18 +113,23 @@ nav ul li a:hover{
     }
 }
 
+.previous_button_div{
+    float: left;
+    margin-left: 47%;
+}
+
 @media (max-width:768px){
     .menu-toggle{
         display: block;
         width: 40px;
         height: 40px;
         margin: 10px;
-        background: #fff;
+        background: rgb(170, 46, 46);
         float: right;
         cursor: pointer;
         text-align: center;
         font-size: 30px;
-        color: #f33636;
+        color: #fff;
     }
 
     .menu-toggle:before{
@@ -102,6 +158,16 @@ nav ul li a:hover{
     nav.active ul li a{
         margin: 0;
     }
+
+    .searchbar{
+        padding: 10px;
+    }
+
+    .previous_button_div{
+        float: left;
+        margin-left: 41%;
+    }
+
 }
 
 .btn-outline {
@@ -545,4 +611,51 @@ a:hover {
     font-size: 17px;
     font-weight: 200;
     color: rgb(58, 53, 53);
+}
+
+.searchbar{
+    margin-top: 16px;
+}
+
+.searchbar_t{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    padding: 5px;
+    width: 200px;
+}
+
+.searchbar_b{
+    height: 40px;
+    width: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    background-color: rgb(214, 57, 57);
+    color: white;
+}
+
+.searchbar_b:hover{
+    background-color: #ff2020;
+    transition: 0.5s;
+}
+
+.readmore{
+    text-align: center;
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    color: rgb(35, 86, 255);
+    border-width: 1px;
+    background-color: white;
+    font-weight: 500;
+    margin-left: 46%;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.readmore:hover{
+    background-color: rgb(35, 86, 255);
+    color: white;
+    transition: 0.5s;
 }

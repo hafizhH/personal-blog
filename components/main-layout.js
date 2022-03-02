@@ -14,18 +14,18 @@ export default function MainLayout({ children }) {
   return (
     <>
         <div className='headernav'>
-            <a href="#" className="logo">GoBlog</a>
+        <div className="logo">GoBlog</div>
             <div className={"menu-toggle " + ((isMenuActive) ? "active" : "")} onClick={() => setIsMenuActive(!isMenuActive)}></div>
             <nav className={(isMenuActive) ? "active" : ""}>
                 <ul>
-                    <Link href="/"><li><a>Home</a></li></Link>
-                    <Link href="/posts"><li><a>Posts</a></li></Link>
-                    <Link href="/admin/cms"><li><a>Write</a></li></Link>
-                    <Link href="/admin/login"><li><a>My Account</a></li></Link>
+                    <Link href="/"><li><a><i className="fa-solid fa-house"></i>&nbsp;&nbsp;Home</a></li></Link>
+                    <Link href="/posts"><li><a><i className="fa-solid fa-list"></i>&nbsp;&nbsp;Posts</a></li></Link>
+                    <Link href="/admin/cms"><li><a><i className="fa-solid fa-pen"></i>&nbsp;&nbsp;Write</a></li></Link>
+                    <Link href="/admin/login"><li><a><i className="fa-solid fa-user"></i>&nbsp;&nbsp;My Account</a></li></Link>
                     <li>
-                      <form action="/posts/search" onSubmit={(event) => handleSearch(event)}>
-                        <input type="search" name="keywords" placeholder="Search" aria-label="Search"></input>
-                        <button type="submit">Search</button>
+                      <form className="searchbar" action="/posts/search" onSubmit={(event) => handleSearch(event)}>
+                        <input type="search" name="keywords" placeholder=" Search " aria-label="Search" className='searchbar_t'></input>
+                        <button type="submit" className='searchbar_b'><i className="fa-solid fa-magnifying-glass"></i></button>
                       </form>
                     </li>
                 </ul>

@@ -39,14 +39,14 @@ export default function Home({ allPostsData }) {
             </section>
           </div>
         </main>
-
-          <br></br>
-        <nav aria-label="Page navigation example">
-            <ul className="pagination justify-content-center">
-              <li className="page-item"><Link href="/posts"><a className="page-link">Read More</a></Link></li>
-            </ul>
-        </nav>
         <br></br>
+        <Link href="/posts">
+          <button type='button' className='readmore'>
+            Read more
+          </button>
+        </Link>
+
+        <br></br><br></br><br></br>
       </MainLayout>
     </>
   );

@@ -407,3 +407,103 @@
 .card .inputs input[type="text"][readonly] {
     border: 2px solid rgba(0, 0, 0, 0)
 }
+
+.post_title{
+    font-size: 40px;
+    font-weight: 800;
+    color: rgb(22, 22, 22);
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+    padding: 20px;
+}
+
+.post_title_mini{
+    font-size: 17px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.post_list{
+    height: auto;
+    margin-top: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    box-shadow: 11px 10px 38px -6px rgba(0,0,0,0.39);
+    -webkit-box-shadow: 11px 10px 38px -6px rgba(0,0,0,0.39);
+    -moz-box-shadow: 11px 10px 38px -6px rgba(0,0,0,0.39);
+    background-color: #f7f7f7;
+    border-radius: 20px;
+    padding: 70px;
+
+}
+
+.home_page{
+    margin-top: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 60px;
+    width: 500px;
+}
+
+.home_name{
+    font-size: 70px;
+    font-weight: 800;
+    color: black;
+}
+
+.home_info{
+    font-size: 22px;
+    font-weight: 400;
+    color: black;
+}
+
+.home_title{
+    font-size: 40px;
+    font-weight: 800;
+    color: rgb(22, 22, 22);
+    text-align: center;
+    margin-left: 30px;
+    padding: 20px;
+}
+
+.home_posts{
+    min-height: 500px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.home_img{
+    height: 250px;
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 11px 10px 38px -6px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 11px 10px 38px -6px rgba(0, 0, 0, 0.185);
+    -moz-box-shadow: 11px 10px 38px -6px rgba(0, 0, 0, 0.24);
+    margin-left: 50px;
+    float: left;
+}
+
+.welcome_text{
+    margin-left: 70px;
+    margin-top: 40px;
+    font-size: 50px;
+    font-weight: 700;
+    float: left;
+    height:auto;
+}
+
+.username_color{
+    color: rgb(204, 38, 38);
+}
+
+.welcome_text_mini{
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 10px;
+}

@@ -24,20 +24,26 @@ export default function Posts({ allPostsData }) {
         <main className="mt-0 pt-5">
           <div className="container">
             <section className="text-center">
-              <h4 className="mb-5"><strong>All recent posts</strong></h4>
+            <h4 className="post_title">Showing all recent posts</h4>
+              <div className="post_title_mini">
+                feel free to comment.
+              </div>
+              <br/><br/>
               <PostList allPostsData={allPostsData}/>
             </section>
           </div>
         </main>
 
+
+          <div className='previous_button_div'>
+            <button type='button' className='previous_button'><i className="fa-solid fa-angle-left"></i></button>
+          </div>
+          
+          <div className='next_button_div'>
+            <button type='button' className='next_button'><i className="fa-solid fa-angle-right"></i></button>
+          </div>
+
           <br></br>
-        <nav aria-label="Page navigation example">
-            <ul className="pagination justify-content-center">
-              <li className="page-item"><a className="page-link" href="#">1</a></li>
-              <li className="page-item"><a className="page-link" href="#">2</a></li>
-              <li className="page-item"><a className="page-link" href="#">3</a></li>
-            </ul>
-        </nav>
         <br></br>
       </MainLayout>
     </>

@@ -29,28 +29,27 @@ export function Dashboard() {
   }, []);
   
   return (
-    <div className={styles.contentContainer}>
-      <div className={styles.leftContent}>
-        <ul className={styles.postList}>
-          {postList.map((postData, index) => {
-            return (
-              <li className={styles.postListItem} key={index}>
-                <div className={styles.thumbContainer}>
-                  <img src={postData.thumbImg} />
-                </div>
-                <div className={styles.postDetails}>
-                  <div>ID : {postData.postId}</div>
-                  <div>Title : {postData.title}</div>
-                  <div>Post date : {formatDate(postData.date)}</div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+    <div className={styles2.content}>
+      <div className={styles2.home_page}>
+        <div className={styles2.home_name}>
+          <i className="fa-solid fa-chart-line"></i>&nbsp;Dashboard
+        </div>
       </div>
-      <div className={styles.rightContent}>
-        
+      <img src="https://i.imgur.com/V4RclNb.png" className="home_img" alt="Profile Picture" />
+      <div className={styles2.welcome_text}>
+        Welcome back, <div className={styles2.username_color}>Username Fullname</div>
+        <div className={styles2.welcome_text_mini}>
+
+        </div>
       </div>
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <div className={styles2.home_title}>
+        Your recent posts.
+      </div>
+      <div className={styles2.home_posts}>
+
+      </div>
+      <br></br><br></br>
     </div>
   );
 }
@@ -75,6 +74,9 @@ export function PostList({ setPage }) {
 
   return (
     <div className={styles.contentContainer}>
+      <div className={styles.manage_header}>
+      <i className="fa-solid fa-wrench"></i> Manage Posts
+      </div>
       <div className={styles.leftContent}>
         <ul className={styles.postList}>
           {postList.map((postData, index) => {
@@ -132,8 +134,11 @@ export function PostEditor({ postId }) {
 
   async function handleInputChange(element) {
     let newPostData = postData;
+    newPostData.mdContent = element.value;
     newPostData.htmlContent = await mdToHtml(element.value);
+    console.log(newPostData);
     setPostData(newPostData);
+    document.getElementById('preview-content').innerHTML = newPostData.htmlContent;
   }
 
   function getHTMLContent() {
@@ -143,6 +148,7 @@ export function PostEditor({ postId }) {
   
   return (
     <div className={styles.contentContainer}>
+      <div className={styles.editortitle}><i className="fa-solid fa-pen-to-square"></i> Edit post<button className={styles.saveChanges}>Save</button></div>
       <div className={styles.postMetaContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.thumbContainer2}>
@@ -151,16 +157,16 @@ export function PostEditor({ postId }) {
         </div>
         <div className={styles.rightContainer}>
           <div>
-            <label>Title : </label>
-            <input type="text" name="title" placeholder="Post Title..." defaultValue={postData.title}/>
+            <label className={styles.editor_text}>Title : </label>
+            <input type="text" className={styles.editor_input} name="title" placeholder="Post Title..." defaultValue={postData.title}/>
           </div>
           <div>
-            <label>Date : </label>
-            <input type="date" name="date" defaultValue={postData.date} />
+            <label className={styles.editor_text}>Date : </label>
+            <input type="date" className={styles.editor_input} name="date" defaultValue={postData.date} />
           </div>
           <div>
-            <label>Post ID : </label>
-            <input type="text" name="postId" defaultValue={postData.id} />
+            <label className={styles.editor_text}>Post ID : </label>
+            <input type="text" className={styles.editor_input} name="postId" defaultValue={postData.id} />
           </div>
         </div>
       </div>
@@ -169,8 +175,8 @@ export function PostEditor({ postId }) {
           
         </div>
         <div className={styles.editorContainer}>
-          <textarea id="mdContent" defaultValue={postData.mdContent} onFocus={() => autoGrow(document.getElementById('mdContent'))} onInput={(event) => {autoGrow(document.getElementById('mdContent')); handleInputChange(event.target)}}/>
-          <div key={postData.id} className={styles.previewContent} dangerouslySetInnerHTML={getHTMLContent()} />
+          <textarea id="mdContent" defaultValue={postData.mdContent} onFocus={() => autoGrow(document.getElementById('mdContent'))} onChange={(event) => {autoGrow(document.getElementById('mdContent')); handleInputChange(event.target)}}/>
+          <div id="preview-content" className={styles.previewContent} dangerouslySetInnerHTML={getHTMLContent()} />
         </div>
       </div>
     </div>

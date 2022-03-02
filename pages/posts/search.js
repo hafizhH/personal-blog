@@ -29,13 +29,14 @@ export default function Search({ searchResultsData, query }) {
             <br></br>
             <PostList searchResultsData={searchResultsData}/>
             <br></br>
-          <nav aria-label="Page navigation example">
-            <ul className="pagination justify-content-center">
-              <li className="page-item"><a className="page-link" href="#">1</a></li>
-              <li className="page-item"><a className="page-link" href="#">2</a></li>
-              <li className="page-item"><a className="page-link" href="#">3</a></li>
-            </ul>
-         </nav>
+            <div className='previous_button_div'>
+              <button type='button' className='previous_button'><i className="fa-solid fa-angle-left"></i></button>
+            </div>
+          
+            <div className='next_button_div'>
+              <button type='button' className='next_button'><i className="fa-solid fa-angle-right"></i></button>
+            </div>
+
         </div>
         <br></br><br></br>
       </MainLayout>
