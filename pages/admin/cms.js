@@ -8,13 +8,13 @@ import axios from 'axios';
 import Router from 'next/router';
 
 export default function CMS() {
-  const [ page, setPage ] = useState('dashboard');
+  const [ page, setPage ] = useState('Dashboard');
 
   useEffect(() => {
     let loginCredentials = cookie.get('loginCredentials');
     if (loginCredentials) {
       let loginResult;
-      axios.post('http://localhost:3000/api/login', {}, { withCredentials: true })
+      axios.post('/api/login', {}, { withCredentials: true })
       .then(response => {
         loginResult = response.data;
         console.log("loginResult:" + loginResult)

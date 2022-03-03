@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { formatDate } from '../lib/utilities';
+import { formatDate, toLocalTZISOString } from '../lib/utilities';
 import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
@@ -14,7 +14,7 @@ export function Dashboard() {
   useEffect(() => {
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/dbQuery',
+      url: '/api/dbQuery',
       data: {}
       //headers: { 'Content-Type': 'multipart/form-data', 'X-CSRFToken': sessionStorage.getItem('csrftoken') },
     }).then((response) => {
@@ -32,17 +32,17 @@ export function Dashboard() {
     <div className={styles2.content}>
       <div className={styles2.home_page}>
         <div className={styles2.home_name}>
-          <i className="fa-solid fa-chart-line"></i>&nbsp;Dashboard
+          <i className="fa-solid fa-chart-line"></i> Dashboard
         </div>
       </div>
-      <img src="https://i.imgur.com/V4RclNb.png" className="home_img" alt="Profile Picture" />
+      <img src="https://i.imgur.com/V4RclNb.png" className={styles2.home_img} alt="Profile Picture" />
       <div className={styles2.welcome_text}>
-        Welcome back, <div className={styles2.username_color}>Username Fullname</div>
+        Welcome back, <div className={styles2.username_color}>{ (Cookies.get('loginCredentials')) ? JSON.parse(Cookies.get('loginCredentials')).authorAcc.name : ''  }</div>
         <div className={styles2.welcome_text_mini}>
 
         </div>
       </div>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       <div className={styles2.home_title}>
         Your recent posts.
       </div>
@@ -60,7 +60,7 @@ export function PostList({ setPage }) {
   useEffect(() => {
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/dbQuery',
+      url: '/api/dbQuery',
       data: { type: 'getAllPostsData' }
       //headers: { 'Content-Type': 'multipart/form-data', 'X-CSRFToken': sessionStorage.getItem('csrftoken') },
     }).then((response) => {
@@ -93,6 +93,9 @@ export function PostList({ setPage }) {
               </li>
             );
           })}
+          <li className={`${styles.postListItem} ${styles.postListItemAdd}`} onClick={() => setPage('PostEditor%%')}>
+            +
+          </li>
         </ul>
       </div>
       <div className={styles.rightContent}>
@@ -103,12 +106,13 @@ export function PostList({ setPage }) {
 }
 
 export function PostEditor({ postId }) {
-  const [ postData, setPostData ] = useState({});
-  
+  const [ postData, setPostData ] = useState({ _id: '', id:'', htmlContent:'', markdownContent: '', comments: [], title: '', date: '', author: (Cookies.get('loginCredentials')) ? JSON.parse(Cookies.get('loginCredentials')).authorAcc.name : '', thumbImg: '', previewContent: ''});
+  const [ htmlContent, setHtmlContent ] = useState(''); 
   useEffect(() => {
+    if (postId == '') return;
     axios({
       method: 'post',
-      url: 'http://localhost:3000/api/dbQuery',
+      url: '/api/dbQuery',
       data: { type: 'fetchPostData', postId: postId }
       //headers: { 'Content-Type': 'multipart/form-data', 'X-CSRFToken': sessionStorage.getItem('csrftoken') },
     }).then((response) => {
@@ -121,8 +125,44 @@ export function PostEditor({ postId }) {
     });
   }, []);
 
+  useEffect(() => {
+    
+  }, [postData]);
+
   function autoGrow(element) {
     element.style.height = (element.scrollHeight)+"px";
+  }
+
+  function handleSavePost() {
+    let newPostData = postData;
+    newPostData.title = document.getElementById('input-title').value;
+    newPostData.date = document.getElementById('input-date').value;
+    newPostData.postId = document.getElementById('input-postId').value;
+    newPostData.thumbImg = document.getElementById('input-thumbImg').value;
+    newPostData.previewContent = document.getElementById('input-previewContent').value;
+    newPostData.markdownContent = document.getElementById('mdContent').value;
+    axios.post('/api/dbQuery', { type: 'updatePostData', postData: newPostData })
+    .then(response => {
+      if (response.data.data) {
+        setPostData(newPostData);
+        alert('Post saved successfully');
+      } else
+        alert('Failed to save post');
+    });
+  }
+
+  function handleDeletePost() {
+    if (confirm('Are you sure to delete this post? This action cannot be undone')) {
+      axios.post('/api/dbQuery', { type: 'deletePostData', _id: postData._id })
+      .then(response => {
+        if (response.data.data) {
+          alert('Post deleted successfully');
+        } else {
+          alert('Failed to delete post');
+        }
+      });
+    } else
+      return;
   }
 
   async function mdToHtml(mdContent) {
@@ -134,11 +174,11 @@ export function PostEditor({ postId }) {
 
   async function handleInputChange(element) {
     let newPostData = postData;
-    newPostData.mdContent = element.value;
-    newPostData.htmlContent = await mdToHtml(element.value);
-    console.log(newPostData);
+    newPostData.markdownContent = element.value;
+    const newHtmlContent = await mdToHtml(element.value);
+    document.getElementById('preview-content').innerHTML = newHtmlContent;
     setPostData(newPostData);
-    document.getElementById('preview-content').innerHTML = newPostData.htmlContent;
+    setHtmlContent(newHtmlContent);
   }
 
   function getHTMLContent() {
@@ -148,25 +188,38 @@ export function PostEditor({ postId }) {
   
   return (
     <div className={styles.contentContainer}>
-      <div className={styles.editortitle}><i className="fa-solid fa-pen-to-square"></i> Edit post<button className={styles.saveChanges}>Save</button></div>
+      <div className={styles.editortitle}>
+        <i className="fa-solid fa-pen-to-square"></i> Edit post
+        <button className={styles.saveChanges} onClick={() => handleSavePost()}>Save</button>
+        <button className={styles.saveChanges} onClick={() => handleDeletePost()}>Delete</button>
+      </div>
+      
       <div className={styles.postMetaContainer}>
         <div className={styles.leftContainer}>
           <div className={styles.thumbContainer2}>
-            <img src={postData.thumbImg} />
+            <img id="preview-thumbImg" src={postData.thumbImg} alt="Thumbnail Image Preview" />
           </div>
         </div>
         <div className={styles.rightContainer}>
           <div>
             <label className={styles.editor_text}>Title : </label>
-            <input type="text" className={styles.editor_input} name="title" placeholder="Post Title..." defaultValue={postData.title}/>
+            <input type="text" className={styles.editor_input} id="input-title" placeholder="Post Title..." defaultValue={postData.title} />
           </div>
           <div>
             <label className={styles.editor_text}>Date : </label>
-            <input type="date" className={styles.editor_input} name="date" defaultValue={postData.date} />
+            <input type="date" className={styles.editor_input} id="input-date" defaultValue={postData.date} />
           </div>
           <div>
             <label className={styles.editor_text}>Post ID : </label>
-            <input type="text" className={styles.editor_input} name="postId" defaultValue={postData.id} />
+            <input type="text" className={styles.editor_input} id="input-postId" defaultValue={postData.postId} />
+          </div>
+          <div>
+            <label className={styles.editor_text}>Thumbnail Image URL : </label>
+            <input type="text" className={styles.editor_input} id="input-thumbImg" defaultValue={postData.thumbImg} onChange={(event) => document.getElementById('preview-thumbImg').src = event.target.value} />
+          </div>
+          <div>
+            <label className={styles.editor_text}>Preview text : </label>
+            <input type="text" className={styles.editor_input} id="input-previewContent" defaultValue={postData.previewContent} />
           </div>
         </div>
       </div>
@@ -175,7 +228,7 @@ export function PostEditor({ postId }) {
           
         </div>
         <div className={styles.editorContainer}>
-          <textarea id="mdContent" defaultValue={postData.mdContent} onFocus={() => autoGrow(document.getElementById('mdContent'))} onChange={(event) => {autoGrow(document.getElementById('mdContent')); handleInputChange(event.target)}}/>
+          <textarea id="mdContent" defaultValue={postData.markdownContent} onFocus={() => autoGrow(document.getElementById('mdContent'))} onChange={(event) => {autoGrow(document.getElementById('mdContent')); handleInputChange(event.target)}}/>
           <div id="preview-content" className={styles.previewContent} dangerouslySetInnerHTML={getHTMLContent()} />
         </div>
       </div>
@@ -192,7 +245,7 @@ export function ManageProfile() {
   }, []);
 
   function saveProfileHandler() {
-    axios.post('http://localhost:3000/api/dbQuery', { type: 'setAccountData', authorAcc: authorAcc })
+    axios.post('/api/dbQuery', { type: 'setAccountData', authorAcc: authorAcc })
     .then(response => {
       if (response.data.data) {
         const cookies = JSON.parse(Cookies.get("loginCredentials"));
@@ -236,7 +289,7 @@ export function ManageProfile() {
             <div className={styles2.inputs}> <span><i className="fa-solid fa-person"></i> Full Name</span> <input type="text" readOnly defaultValue={authorAcc.name} /> </div>
             <div className={styles2.inputs}> <span><i className="fa-solid fa-envelope"></i> Email</span> <input type="text" readOnly defaultValue={authorAcc.email} /> </div>
             <div className={styles2.inputs}> <span><i className="fa-solid fa-address-card"></i> Username</span> <input type="text" readOnly defaultValue={authorAcc.user} /> </div>
-            <div className={styles2.inputs}> <span><i className="fa-solid fa-calendar"></i> New Password</span> <input type="password" readOnly defaultValue="" /> </div>
+            <div className={styles2.inputs}> <span><i className="fa-solid fa-calendar"></i> New Password</span> <br/><input type="password" readOnly defaultValue="" /> </div>
           </div>
         </div>
       </div>

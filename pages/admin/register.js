@@ -16,7 +16,7 @@ export default function Register() {
     const email = formData.get('email');
     const username = formData.get('username');
     const password = formData.get('password');
-    let registerResult = await axios.post('http://localhost:3000/api/register', { name: name, email: email, username: username, password: password });
+    let registerResult = await axios.post('/api/register', { name: name, email: email, username: username, password: password });
     if (registerResult.data.registerResult) {
       alert('Register success, please login to your account');
       Router.push('/admin/login');

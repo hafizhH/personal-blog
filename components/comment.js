@@ -1,4 +1,4 @@
-import { formatDate } from "../lib/utilities";
+import { formatDate, toLocalTZISOString } from "../lib/utilities";
 import { useEffect, useState } from "react";
 import { Children } from "react/cjs/react.production.min";
 import axios from "axios";
@@ -23,13 +23,13 @@ function CommentList({ comments, setComments, postId }) {
   
   function handlePostComment(replyFrom, replyTo, replyText, targetIndex) {
     let newComments = comments;
-    const date = new Date().toISOString().split('T')[0];
+    let date = toLocalTZISOString(new Date()).split('T')[0];
     console.log(postId);
     if (targetIndex.length == 0)
       newComments.push({ from: replyFrom, date: date, text: replyText, reply: []});
     else
       newComments[targetIndex[0]].reply.push({ from: replyFrom, to: replyTo, date: date, text: replyText });
-    axios.post('http://localhost:3000/api/dbQuery', { type: 'updateCommentData', postId: postId, comments: newComments })
+    axios.post('/api/dbQuery', { type: 'updateCommentData', postId: postId, comments: newComments })
     .then(response => {
       setComments(newComments);
     })

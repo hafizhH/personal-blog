@@ -241,7 +241,7 @@
     }
 
     .nav_bar .nav_btn:hover{
-        color: #19B3D3;
+        color: #ad2424;
     }
 
     .mobile_nav_items{
@@ -262,7 +262,7 @@
     }
 
     .mobile_nav_items a:hover{
-        background: #19B3D3;
+        background: #ad2424;
     }
 
     .mobile_nav_items i{
@@ -445,7 +445,6 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-bottom: 60px;
-    width: 500px;
 }
 
 .home_name{

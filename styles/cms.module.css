@@ -203,6 +203,25 @@
     box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
 }
 
+ul .postListItemAdd {
+    box-sizing: border-box;
+    border: 1px dashed rgb(200,200,200);
+    box-shadow: none;
+    text-align: center;
+    font-size: 3rem;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    height: 110px;
+    transition: 0.2s;
+    color: rgba(200,200,200,0.5);
+}
+
+ul .postListItemAdd:hover {
+    transition: 0.2s;
+    border: 1px dashed rgb(150,150,150);
+    color: rgba(200,200,200,0.8)
+}
+
 .thumbContainer {
     float: left;
     margin: 0px;
@@ -269,16 +288,16 @@
     margin-bottom: 50px;
     margin-left: 20px;
  }
+
 .rightContainer {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
     justify-content: space-around;
     border-style: solid;
     border-width: 2px;
-    margin-right: 500px;
 }
 
 .saveChanges{
@@ -303,14 +322,14 @@
 }
 
 .editor_text{
-    font-size: 17px;
+    font-size: 1rem;
     font-weight: 500;
     padding-right: 15px;
 }
 
 .editor_input{
     width: 500px;
-    font-size: 22px;
+    font-size: 1rem;
 }
 
 .rightContainer div {
@@ -359,7 +378,8 @@
     min-height: 500px;
     float: left;
     resize: none;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
     outline: none;
     border-style: solid;
     border-width: 1px;
@@ -372,8 +392,8 @@
     padding: 30px;
     margin-left: 20px;
     width: 50%;
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 2.0;
     text-align: justify;
     border-radius: 10px;
 }
