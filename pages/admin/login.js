@@ -10,7 +10,6 @@ import cookie from 'js-cookie';
 export default function Login() {
   
   useEffect(() => {
-    console.log('ENV : ' + process.env.SERVER_URL)
     let loginCredentials = cookie.get('loginCredentials');
     if (loginCredentials) {
       let loginResult;
